@@ -13,7 +13,8 @@ namespace CMP1903M_A01_2223 {
         }
 
         public static bool shuffleCardPack(int typeOfShuffle) {
-            //Shuffles the pack based on the type of shuffle
+            var sort = Sorts.GetSort(typeOfShuffle);
+            return sort.Sort(PACK);
         }
 
         public static Card deal() {

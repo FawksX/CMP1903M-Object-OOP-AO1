@@ -7,7 +7,9 @@ namespace CMP1903M_A01_2223 {
 
     class NoShuffleSort : Sort {
         public bool Sort(Pack pack) {
-            return true; // There is nothing to sort here
+            // In this case, the bool represents if the pack has ACTUALLY been sorted,
+            // So in this case it has not been sorted as it remains the same.
+            return false;
         }
     }
 
