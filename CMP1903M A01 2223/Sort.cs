@@ -2,23 +2,23 @@
 
 namespace CMP1903M_A01_2223 {
     interface Sort {
-        Pack Sort(Pack pack);
+        bool Sort(Pack pack);
     }
 
     class NoShuffleSort : Sort {
-        public Pack Sort(Pack pack) {
-            return pack;
+        public bool Sort(Pack pack) {
+            return true; // There is nothing to sort here
         }
     }
 
     class FisherYatesShuffleSort : Sort {
-        public Pack Sort(Pack pack) {
+        public bool Sort(Pack pack) {
             throw NotImplementedException();
         }
     }
 
     class RiffleShuffleSort : Sort {
-        public Pack Sort(Pack pack) {
+        public bool Sort(Pack pack) {
             throw NotImplementedException();
         }
     }
