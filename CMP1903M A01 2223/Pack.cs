@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CMP1903M_A01_2223 {
     class Pack : List<Card> {
@@ -18,11 +20,23 @@ namespace CMP1903M_A01_2223 {
         }
 
         public static Card deal() {
-            //Deals one card
+            if (PACK.Count < 1) {
+                throw new Exception("There is not enough cards in the deck to deal!");
+            }
+
+            var card = PACK.First();
+            PACK.Remove(card);
+            return card;
         }
 
         public static List<Card> dealCard(int amount) {
-            //Deals the number of cards specified by 'amount'
+            if (PACK.Count < amount) {
+                throw new Exception("There is not enough cards in the deck to deal!");
+            }
+
+            var cards = PACK.GetRange(0, amount);
+            PACK.RemoveRange(0, amount);
+            return cards;
         }
 
         public static PackBuilder Builder() {
