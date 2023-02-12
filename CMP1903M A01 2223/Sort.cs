@@ -13,9 +13,23 @@ namespace CMP1903M_A01_2223 {
         }
     }
 
+    
+    /**
+     * A Fisher-Yates Shuffle is simple:
+     * forEach card in the collection:
+     *   - Pick a random Index
+     *   - Flip the index1 card with the random index card
+     */
     class FisherYatesShuffleSort : Sort {
         public bool Sort(Pack pack) {
-            throw NotImplementedException();
+
+            foreach (var card in pack) {
+                var index = pack.IndexOf(card);
+                var randomIndex = Util.RANDOM.Next(index, pack.Count);
+                (pack[index], pack[randomIndex]) = (pack[randomIndex], pack[index]);
+            }
+
+            return true;
         }
     }
 
