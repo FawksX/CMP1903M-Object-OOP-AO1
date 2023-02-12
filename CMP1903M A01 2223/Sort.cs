@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 
 namespace CMP1903M_A01_2223 {
     interface Sort {
@@ -32,9 +32,29 @@ namespace CMP1903M_A01_2223 {
         }
     }
 
+    /**
+     * Riffle shuffle is the traditional card shuffle where you split the deck in two and put each card in one
+     * after another, taking it in turns from each side of the split deck (usually LR, LR, LR....)
+     * So this sort we need to split the deck and rejoin it by taking one from each side of the deck
+     */
     class RiffleShuffleSort : Sort {
         public bool Sort(Pack pack) {
-            throw NotImplementedException();
+            var halfDeckSize = pack.Count / 2;
+
+
+            var left = pack.GetRange(0, halfDeckSize - 1);
+            var right = pack.GetRange(halfDeckSize - 1, pack.Count - 1);
+
+            var newDeck = new List<Card>();
+            for (var i = 0; i < halfDeckSize; i++) {
+                newDeck.Add(left[i]);
+                newDeck.Add(right[i]);
+            }
+
+            pack.Clear();
+            pack.AddRange(newDeck);
+
+            return true;
         }
     }
 
