@@ -13,7 +13,7 @@ namespace CMP1903M_A01_2223 {
         }
     }
 
-    
+
     /**
      * A Fisher-Yates Shuffle is simple:
      * forEach card in the collection:
@@ -22,7 +22,6 @@ namespace CMP1903M_A01_2223 {
      */
     class FisherYatesShuffleSort : Sort {
         public bool Sort(Pack pack) {
-
             foreach (var card in pack) {
                 var index = pack.IndexOf(card);
                 var randomIndex = Util.RANDOM.Next(index, pack.Count);
@@ -47,7 +46,7 @@ namespace CMP1903M_A01_2223 {
         public static Sort GetSort(int sortId) {
             return GetSortOrDefault(sortId, NO_SHUFFLE);
         }
-        
+
         public static Sort GetSortOrDefault(int sortId, Sort defaultSort) {
             switch (sortId) {
                 case 1:
