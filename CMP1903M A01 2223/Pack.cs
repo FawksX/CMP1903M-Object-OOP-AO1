@@ -4,9 +4,9 @@ using System.Linq;
 
 namespace CMP1903M_A01_2223 {
     class Pack : List<Card> {
-        private static Pack PACK = Builder().Build();
+        public static Pack PACK = Builder().Build();
 
-        private Pack(List<Card> initialCards) : base(54) {
+        public Pack(List<Card> initialCards) : base(54) {
             AddRange(initialCards);
         }
 
@@ -37,6 +37,15 @@ namespace CMP1903M_A01_2223 {
             var cards = PACK.GetRange(0, amount);
             PACK.RemoveRange(0, amount);
             return cards;
+        }
+
+        public static void Reset() {
+            PACK = Builder().Build();
+        }
+
+        public static Pack Copy() {
+            // We want all the cards currently in the deck, so the predication can just always be true
+            return new Pack(PACK.FindAll(card => { return true; }));
         }
 
         public static PackBuilder Builder() {

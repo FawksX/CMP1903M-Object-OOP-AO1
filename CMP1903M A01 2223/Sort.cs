@@ -79,5 +79,17 @@ namespace CMP1903M_A01_2223 {
                     return defaultSort;
             }
         }
+
+        public static int GetSortId(Sort sort) {
+            if (sort is FisherYatesShuffleSort) {
+                return 1;
+            }
+            else if (sort is RiffleShuffleSort) {
+                return 2;
+            }
+            else {
+                return 3; // No Shuffle
+            }
+        }
     }
 }
