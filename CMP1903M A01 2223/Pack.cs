@@ -11,7 +11,7 @@ namespace CMP1903M_A01_2223 {
         }
 
         public Pack() {
-            PACK = Builder().Build();
+
         }
 
         public static bool shuffleCardPack(int typeOfShuffle) {
@@ -80,7 +80,7 @@ namespace CMP1903M_A01_2223 {
                     }
                 }
 
-                Pack pack = new Pack();
+                Pack pack = new Pack(cards);
                 sort.Sort(pack);
 
                 return pack;

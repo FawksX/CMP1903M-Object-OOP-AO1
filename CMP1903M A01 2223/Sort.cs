@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace CMP1903M_A01_2223 {
     interface Sort {
@@ -22,7 +23,7 @@ namespace CMP1903M_A01_2223 {
      */
     class FisherYatesShuffleSort : Sort {
         public bool Sort(Pack pack) {
-            foreach (var card in pack) {
+            foreach (var card in pack.ToList()) {
                 var index = pack.IndexOf(card);
                 var randomIndex = Util.RANDOM.Next(index, pack.Count);
                 (pack[index], pack[randomIndex]) = (pack[randomIndex], pack[index]);
@@ -43,10 +44,10 @@ namespace CMP1903M_A01_2223 {
 
 
             var left = pack.GetRange(0, halfDeckSize - 1);
-            var right = pack.GetRange(halfDeckSize - 1, pack.Count - 1);
+            var right = pack.GetRange(halfDeckSize - 1, halfDeckSize - 1);
 
             var newDeck = new List<Card>();
-            for (var i = 0; i < halfDeckSize; i++) {
+            for (var i = 0; i < halfDeckSize -1; i++) {
                 newDeck.Add(left[i]);
                 newDeck.Add(right[i]);
             }
