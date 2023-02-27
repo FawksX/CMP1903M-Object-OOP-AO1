@@ -2,8 +2,8 @@
 
 namespace CMP1903M_A01_2223 {
     class Card {
-        private readonly SuitType suitType;
-        private readonly int value;
+        public readonly SuitType suitType;
+        public readonly int value;
 
         public Card(SuitType suitType, int value) {
             this.suitType = suitType;
