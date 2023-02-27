@@ -14,5 +14,9 @@ namespace CMP1903M_A01_2223 {
 
             this.value = value;
         }
+
+        public override string ToString() {
+            return "Card; Suit: " + suitType + " Value: " + value;
+        }
     }
 }
