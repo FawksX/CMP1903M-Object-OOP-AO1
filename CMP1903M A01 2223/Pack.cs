@@ -6,7 +6,7 @@ namespace CMP1903M_A01_2223 {
     class Pack : List<Card> {
         public static Pack PACK = Builder().Build();
 
-        public Pack(List<Card> initialCards) : base(54) {
+        public Pack(List<Card> initialCards) : base(52) {
             AddRange(initialCards);
         }
 
