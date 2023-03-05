@@ -1,67 +1,59 @@
 ﻿using static CMP1903M_A01_2223.Util;
 
 namespace CMP1903M_A01_2223 {
+    
+    /**
+     * <summary>
+     * Testing Class
+     * This runs through all the tests to ensure they work correctly. With the exception of
+     * No-Shuffle (which should be 100% similarity), the similarity reports should not be high numbers.
+     *
+     * As this is a utility class, the entrypoint is <see cref="Testing.Test"/>
+     * </summary>
+     */
     public class Testing {
+        
+        /**
+         * Runs the Test
+         */
         public static void Test() {
-            /**
-             * First Sort: No Shuffle
-             */
-            Print("############ No Shuffle Test: ############");
+            HandleSort(Sorts.NO_SHUFFLE);
+            HandleSort(Sorts.FISHER_YATES_SHUFFLE);
+            HandleSort(Sorts.RIFFLE_SHUFFLE);
+        }
+
+        /**
+         * A simple method to reset the pack, find a similarity score and deal a random card from the deck.
+         * This is used for all sorts - The only one with a high similarity should be <see cref="Sorts.NO_SHUFFLE"/>
+         */
+        private static void HandleSort(Sort sort) {
+            Print("##### HANDLING TEST: " + sort.Name());
             Pack.Reset();
-            var oldPackNoShuffle = Pack.Copy();
-            Pack.shuffleCardPack(Sorts.GetSortId(Sorts.NO_SHUFFLE));
-            foreach (var cardNoShuffle in Pack.PACK) {
-                if (Pack.PACK.IndexOf(cardNoShuffle) != oldPackNoShuffle.IndexOf(cardNoShuffle)) {
-                    Print("The Shuffle sort has not completed properly");
+            var oldPack = Pack.Copy();
+            Pack.ShuffleCardPack(sort);
+
+            var similarity = GetSimilarity(oldPack);
+            Print("The deck is " + similarity + "% similar to the original deck");
+
+            var deal = Pack.deal();
+            Print("Deal; " + sort.Name());
+            Print(deal.ToString());
+        }
+        
+        /**
+         * Gets a similarity score by checking how many cards are in the same index as pre-sort as a percentage
+         * This is formatted to 2dp
+         */
+        private static string GetSimilarity(Pack oldPack) {
+            float sameCards = 0;
+            foreach (var card in Pack.PACK) {
+                if (Pack.PACK.IndexOf(card) == oldPack.IndexOf(card)) {
+                    sameCards++;
                 }
             }
 
-            var dealNoShuffle = Pack.deal();
-            Print("Deal; No Shuffle:");
-            Print(dealNoShuffle.ToString());
-
-            /**
-             * Second Shuffle: Fisher-Yates Shuffle
-             */
-            Print("############ Fisher-Yates Shuffle Test: ############");
-            Pack.Reset();
-            var oldPackFisher = Pack.Copy();
-            Pack.shuffleCardPack(Sorts.GetSortId(Sorts.FISHER_YATES_SHUFFLE));
-            var sameCard = 0;
-
-            foreach (var cardFisher in Pack.PACK) {
-                if (Pack.PACK.IndexOf(cardFisher) == oldPackFisher.IndexOf(cardFisher)) {
-                    sameCard++;
-                }
-            }
-
-            float similarityPercentFisher = (sameCard / 54f) * 100f;
-            Print("The deck is " + similarityPercentFisher.ToString("n2") + "% similar to the original deck");
-
-            var dealFisher = Pack.deal();
-            Print("Deal; Fisher:");
-            Print(dealFisher.ToString());
-
-            /**
-             * Third Shuffle: Riffle Shuffle
-             **/
-            Print("############ Riffle Shuffle Test: ############");
-            Pack.Reset();
-            var oldPackRiffle = Pack.Copy();
-            Pack.shuffleCardPack(Sorts.GetSortId(Sorts.RIFFLE_SHUFFLE));
-            float sameCardRiffle = 0;
-            foreach (var cardRiffle in Pack.PACK) {
-                if (Pack.PACK.IndexOf(cardRiffle) == oldPackRiffle.IndexOf(cardRiffle)) {
-                    sameCardRiffle++;
-                }
-            }
-
-            float similarityRiffle = (sameCardRiffle / 54f) * 100f;
-            Print("The deck is " + similarityRiffle.ToString("n2") + "% similar to the original deck");
-
-            var dealRiffle = Pack.deal();
-            Print("Deal; Riffle:");
-            Print(dealRiffle.ToString());
+            float similarity = (sameCards / 52f) * 100;
+            return similarity.ToString("n2");
         }
     }
 }

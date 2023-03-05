@@ -11,7 +11,7 @@ namespace CMP1903M_A01_2223 {
      * functions can be accessed directly rather than being nested inside of the object.
      * </summary>
      **/
-    class Pack : List<Card> {
+    public class Pack : List<Card> {
         public static Pack PACK = Builder().Build();
 
         public Pack(List<Card> initialCards) : base(52) {

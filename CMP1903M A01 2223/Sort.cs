@@ -10,8 +10,9 @@ namespace CMP1903M_A01_2223 {
      * used by our Pack class.
      * </summary>
      **/
-    interface Sort {
+    public interface Sort {
         bool Sort(Pack pack);
+        string Name();
     }
 
      /**
@@ -20,11 +21,15 @@ namespace CMP1903M_A01_2223 {
      * It does nothing.
      * <summary>
      */
-    class NoShuffleSort : Sort {
+     public class NoShuffleSort : Sort {
         public bool Sort(Pack pack) {
             // In this case, the bool represents if the pack has ACTUALLY been sorted,
             // So in this case it has not been sorted as it remains the same.
             return false;
+        }
+
+        public string Name() {
+            return "NoShuffle";
         }
     }
 
@@ -37,7 +42,7 @@ namespace CMP1903M_A01_2223 {
      *   - Flip the index1 card with the random index card
      * <summary>
      */
-    class FisherYatesShuffleSort : Sort {
+    public class FisherYatesShuffleSort : Sort {
         public bool Sort(Pack pack) {
             foreach (var card in pack.ToList()) {
                 var index = pack.IndexOf(card);
@@ -46,6 +51,10 @@ namespace CMP1903M_A01_2223 {
             }
 
             return true;
+        }
+        
+        public string Name() {
+            return "FisherYates";
         }
     }
 
@@ -56,7 +65,7 @@ namespace CMP1903M_A01_2223 {
      * So this sort we need to split the deck and rejoin it by taking one from each side of the deck
      * </summary>
      */
-    class RiffleShuffleSort : Sort {
+    public class RiffleShuffleSort : Sort {
         public bool Sort(Pack pack) {
             var halfDeckSize = pack.Count / 2;
 
@@ -75,6 +84,10 @@ namespace CMP1903M_A01_2223 {
 
             return true;
         }
+        
+        public string Name() {
+            return "Riffle";
+        }
     }
 
     /**
@@ -85,7 +98,7 @@ namespace CMP1903M_A01_2223 {
      * NO_SHUFFLE, FISHER_YATES_SHUFFLE and RIFFLE_SHUFFLE easily by our codebase.
      * </summary>
      **/
-    class Sorts {
+    public class Sorts {
         public static readonly Sort NO_SHUFFLE = new NoShuffleSort();
         public static readonly Sort FISHER_YATES_SHUFFLE = new FisherYatesShuffleSort();
         public static readonly Sort RIFFLE_SHUFFLE = new RiffleShuffleSort();

@@ -8,7 +8,7 @@ namespace CMP1903M_A01_2223 {
      * In this case, A = 1, J = 11, Q = 12, K = 13 - This is information we know when working with cards.
      * As there is only four suits we have made this an Enum for simplicity.
     **/
-    class Card {
+    public class Card {
         public readonly SuitType suitType;
         public readonly int value;
 
