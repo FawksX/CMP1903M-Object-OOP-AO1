@@ -6,3 +6,11 @@ C:\Users\olive\Documents\GitHub\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\De
 C:\Users\olive\Documents\GitHub\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.csproj.CoreCompileInputs.cache
 C:\Users\olive\Documents\GitHub\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.exe
 C:\Users\olive\Documents\GitHub\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.pdb
+E:\Git\SynxGames\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\bin\Debug\CMP1903M A01 2223.exe.config
+E:\Git\SynxGames\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\bin\Debug\CMP1903M A01 2223.exe
+E:\Git\SynxGames\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\bin\Debug\CMP1903M A01 2223.pdb
+E:\Git\SynxGames\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.csproj.AssemblyReference.cache
+E:\Git\SynxGames\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.csproj.SuggestedBindingRedirects.cache
+E:\Git\SynxGames\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.csproj.CoreCompileInputs.cache
+E:\Git\SynxGames\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.exe
+E:\Git\SynxGames\CMP1903M-Object-OOP-AO1\CMP1903M A01 2223\obj\Debug\CMP1903M A01 2223.pdb
