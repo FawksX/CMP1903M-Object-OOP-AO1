@@ -27,17 +27,17 @@ namespace CMP1903M_A01_2223 {
          * This is used for all sorts - The only one with a high similarity should be <see cref="Sorts.NO_SHUFFLE"/>
          */
         private static void HandleSort(Sort sort) {
-            Print("##### HANDLING TEST: " + sort.Name());
+            LOGGER.Info("##### HANDLING TEST: " + sort.Name());
             Pack.Reset();
             var oldPack = Pack.Copy();
             Pack.ShuffleCardPack(sort);
 
             var similarity = GetSimilarity(oldPack);
-            Print("The deck is " + similarity + "% similar to the original deck");
+            LOGGER.Info("The deck is " + similarity + "% similar to the original deck");
 
             var deal = Pack.deal();
-            Print("Deal; " + sort.Name());
-            Print(deal.ToString());
+            LOGGER.Info("Deal; " + sort.Name());
+            LOGGER.Info(deal.ToString());
         }
         
         /**
