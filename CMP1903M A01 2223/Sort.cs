@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace CMP1903M_A01_2223 {
@@ -25,6 +26,7 @@ namespace CMP1903M_A01_2223 {
         public bool Sort(Pack pack) {
             // In this case, the bool represents if the pack has ACTUALLY been sorted,
             // So in this case it has not been sorted as it remains the same.
+            Util.EnsurePackCount();
             return false;
         }
 
@@ -44,6 +46,7 @@ namespace CMP1903M_A01_2223 {
      */
     public class FisherYatesShuffleSort : Sort {
         public bool Sort(Pack pack) {
+            Util.EnsurePackCount();
             foreach (var card in pack.ToList()) {
                 var index = pack.IndexOf(card);
                 var randomIndex = Util.RANDOM.Next(index, pack.Count);
@@ -67,6 +70,7 @@ namespace CMP1903M_A01_2223 {
      */
     public class RiffleShuffleSort : Sort {
         public bool Sort(Pack pack) {
+            Util.EnsurePackCount();
             var halfDeckSize = pack.Count / 2;
 
 
