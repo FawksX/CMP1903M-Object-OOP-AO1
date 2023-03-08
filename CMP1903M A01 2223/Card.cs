@@ -1,18 +1,33 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace CMP1903M_A01_2223
-{
-    class Card
-    {
-        //Base for the Card class.
-        //Value: numbers 1 - 13
-        //Suit: numbers 1 - 4
-        //The 'set' methods for these properties could have some validation
-        public int Value { get; set; }
-        public int Suit { get; set; }
+namespace CMP1903M_A01_2223 {
+
+    /**
+     * Simple Card Object
+     * A card has two pieces of important information; the Suit and the Value of the card (A, 2-10, J, Q, K).
+     * In this case, A = 1, J = 11, Q = 12, K = 13 - This is information we know when working with cards.
+     * As there is only four suits we have made this an Enum for simplicity.
+    **/
+    public class Card {
+        public readonly SuitType suitType;
+        public readonly int value;
+
+        public Card(SuitType suitType, int value) {
+            this.suitType = suitType;
+
+            if (value <= 0 || value > 13) {
+                throw new ArgumentOutOfRangeException(nameof(value), "Card value must be > 0 and < 13!");
+            }
+
+            this.value = value;
+        }
+
+        public override string ToString() {
+            return "Card; Suit: " + suitType + " Value: " + value;
+        }
+
+        public override int GetHashCode() {
+            return (int) suitType ^ value;
+        }
     }
 }
